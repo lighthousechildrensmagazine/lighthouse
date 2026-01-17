@@ -37,7 +37,7 @@ export default function IssueCard({
     >
       {/* Tape */}
       <Image
-        src={`/tape${tapeNumber}.png`}
+        src={`/lighthouse/tape${tapeNumber}.png`}
         alt="Tape"
         width={80}
         height={40}

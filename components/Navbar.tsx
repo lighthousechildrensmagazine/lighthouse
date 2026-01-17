@@ -70,7 +70,7 @@ export default function Navbar() {
         {/* Logo */}
         <motion.div variants={itemVariants} className="flex items-center">
           <Image
-            src="/logo1.png"
+            src="/lighthouse/logo1.png"
             alt="Lighthouse Logo"
             width={85}
             height={85}
@@ -89,11 +89,10 @@ export default function Navbar() {
               <motion.div key={link.href} variants={itemVariants}>
                 <Link
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                    isActive
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors ${isActive
                       ? "text-indigo-600"
                       : "text-slate-600 hover:text-indigo-600"
-                  }`}
+                    }`}
                 >
                   {link.label}
                   {isActive && (
