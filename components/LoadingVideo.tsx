@@ -11,7 +11,7 @@ export default function LoadingVideo() {
   useEffect(() => {
     // Check if user has visited before
     const hasVisited = localStorage.getItem("lighthouse_visited");
-    
+
     if (!hasVisited) {
       setIsVisible(true);
       setShowVideo(true);
@@ -42,9 +42,9 @@ export default function LoadingVideo() {
         >
           <video
             ref={videoRef}
-            src="/loading1.mp4"
+            src="/lighthouse/loading1.mp4"
             className="w-full h-full object-contain"
-            muted={false}
+            muted
             playsInline
             onEnded={handleVideoEnd}
             autoPlay
