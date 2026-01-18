@@ -10,6 +10,7 @@ interface IssueCardProps {
   title: string;
   issueNumber: number;
   date: string;
+  coverImage?: string;
   onClick: () => void;
 }
 
@@ -18,6 +19,7 @@ export default function IssueCard({
   title,
   issueNumber,
   date,
+  coverImage,
   onClick,
 }: IssueCardProps) {
   // Randomly select a tape image based on the card id for consistency
@@ -43,9 +45,21 @@ export default function IssueCard({
         height={40}
         className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"
       />
-      <div className="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center">
-        <BookOpen className="w-20 h-20 text-white opacity-80" />
-      </div>
+
+      {coverImage ? (
+        <div className="aspect-[3/4] relative">
+          <Image
+            src={coverImage}
+            alt={title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div className="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center">
+          <BookOpen className="w-20 h-20 text-white opacity-80" />
+        </div>
+      )}
       <div className="p-6">
         <h3 className="text-xl font-display font-bold text-[#1e1b4b] mb-2">
           {title}

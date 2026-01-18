@@ -5,6 +5,7 @@ import { BookOpen, Sparkles, Users, PenTool, Award, FileText, Puzzle, ChevronDow
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useRef } from "react";
+import { issues } from "@/data/issues";
 
 const missionItems = [
   {
@@ -131,7 +132,7 @@ export default function Home() {
             style={{ y: yBook, x: xBook, rotate: rBook, opacity: oBook }}
             className="absolute top-[8%] right-[8%] md:right-[12%] w-56 md:w-80 z-10"
           >
-            <Image src="/lighthouse/book.png" alt="Book" width={400} height={400} className="w-full h-auto drop-shadow-2xl" />
+            <Image src="/lighthouse/book.png" alt="Book" width={400} height={400} className="w-full h-auto drop-shadow-2xl" priority />
           </motion.div>
 
           {/* Ruler (Right Mid) */}
@@ -201,44 +202,69 @@ export default function Home() {
             Latest Issue
           </h2>
           <div className="flex justify-center">
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              className="relative w-full max-w-sm"
-            >
-              <div
-                className="relative bg-white border border-gray-300 p-6 transform rotate-2 hover:rotate-3 transition-transform"
-                style={{
-                  boxShadow: '5px 5px 0px 0px rgba(0,0,0,0.2)',
-                }}
-              >
-                {/* Tape */}
-                <Image
-                  src="/lighthouse/tape1.png"
-                  alt="Tape"
-                  width={140}
-                  height={70}
-                  className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
-                />
-                <div className="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center mb-4">
-                  <BookOpen className="w-24 h-24 text-white opacity-80" />
-                </div>
-                <h3 className="text-2xl font-display font-bold text-[#1e1b4b] mb-2">
-                  Issue #1
-                </h3>
-                <p className="text-[#1e1b4b] mb-4">
-                  Spring 2024 - Fresh Perspectives
-                </p>
-                <Link href="/issues">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-lime-400 text-slate-900 rounded-full py-3 text-center font-semibold hover:bg-lime-500 transition-colors"
+            {/* Latest Issue is the first one in sorted issues */}
+            {(() => {
+              // Get issues and sort by descending issueNumber
+              const sortedIssues = [...issues].sort((a, b) => b.issueNumber - a.issueNumber);
+              const latestIssue = sortedIssues[0];
+
+              if (!latestIssue) return null;
+
+              return (
+                <motion.div
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  className="relative w-full max-w-sm"
+                >
+                  <div
+                    className="relative bg-white border border-gray-300 p-6 transform rotate-2 hover:rotate-3 transition-transform"
+                    style={{
+                      boxShadow: '5px 5px 0px 0px rgba(0,0,0,0.2)',
+                    }}
                   >
-                    Read Now
-                  </motion.div>
-                </Link>
-              </div>
-            </motion.div>
+                    {/* Tape */}
+                    <Image
+                      src="/lighthouse/tape1.png"
+                      alt="Tape"
+                      width={140}
+                      height={70}
+                      className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
+                      style={{ width: "auto", height: "auto" }}
+                    />
+
+                    {latestIssue.coverImage ? (
+                      <div className="aspect-[3/4] relative mb-4">
+                        <Image
+                          src={latestIssue.coverImage}
+                          alt={latestIssue.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center mb-4">
+                        <BookOpen className="w-24 h-24 text-white opacity-80" />
+                      </div>
+                    )}
+
+                    <h3 className="text-2xl font-display font-bold text-[#1e1b4b] mb-2">
+                      {latestIssue.title}
+                    </h3>
+                    <p className="text-[#1e1b4b] mb-4">
+                      {latestIssue.date}
+                    </p>
+                    <Link href="/issues">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full bg-lime-400 text-slate-900 rounded-full py-3 text-center font-semibold hover:bg-lime-500 transition-colors"
+                      >
+                        Read Now
+                      </motion.div>
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })()}
           </div>
         </section>
 
@@ -252,8 +278,8 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             {missionItems.map((item, index) => {
-              // Randomly select a tape image
-              const tapeNumber = useMemo(() => Math.floor(Math.random() * 3) + 1, [index]);
+              // Deterministically select a tape image based on index
+              const tapeNumber = (index % 3) + 1;
               // Different rotation angles for each sticky note
               const rotations = [-2, 1.5, -1, 2];
               const rotation = rotations[index % rotations.length];
@@ -278,6 +304,7 @@ export default function Home() {
                     width={140}
                     height={70}
                     className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
+                    style={{ width: "auto", height: "auto" }}
                   />
                   <h3 className="text-xl font-display font-bold text-[#1e1b4b] mb-3 text-center">
                     {item.title}
@@ -288,7 +315,7 @@ export default function Home() {
             })}
           </div>
         </section>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }

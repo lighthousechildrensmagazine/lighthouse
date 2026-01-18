@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "new-issue": "node scripts/add-issue.mjs",
     "start": "next start",
     "lint": "eslint"
   },
@@ -12,6 +13,7 @@
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.556.0",
     "next": "^16.1.1",
+    "pdf-poppler": "^0.2.3",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },

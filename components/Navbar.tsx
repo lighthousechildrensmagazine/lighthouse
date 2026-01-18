@@ -74,7 +74,7 @@ export default function Navbar() {
             alt="Lighthouse Logo"
             width={85}
             height={85}
-            className="object-contain"
+            className="h-12 w-auto object-contain"
           />
         </motion.div>
 
@@ -90,8 +90,8 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   className={`relative px-4 py-2 text-sm font-medium transition-colors ${isActive
-                      ? "text-indigo-600"
-                      : "text-slate-600 hover:text-indigo-600"
+                    ? "text-indigo-600"
+                    : "text-slate-600 hover:text-indigo-600"
                     }`}
                 >
                   {link.label}

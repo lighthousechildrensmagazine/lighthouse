@@ -4,51 +4,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import IssueCard from "@/components/IssueCard";
 import Modal from "@/components/Modal";
+import { issues as rawIssues } from "@/data/issues";
 
-const issues = [
-  {
-    id: "1",
-    title: "Spring 2024 - Fresh Perspectives",
-    issueNumber: 1,
-    date: "March 2024",
-    pdfUrl: "https://drive.google.com/file/d/12345/preview",
-  },
-  {
-    id: "2",
-    title: "Winter 2024 - Cozy Stories",
-    issueNumber: 2,
-    date: "December 2023",
-    pdfUrl: "https://drive.google.com/file/d/12345/preview",
-  },
-  {
-    id: "3",
-    title: "Fall 2023 - New Beginnings",
-    issueNumber: 3,
-    date: "September 2023",
-    pdfUrl: "https://drive.google.com/file/d/12345/preview",
-  },
-  {
-    id: "4",
-    title: "Summer 2023 - Adventure Time",
-    issueNumber: 4,
-    date: "June 2023",
-    pdfUrl: "https://drive.google.com/file/d/12345/preview",
-  },
-  {
-    id: "5",
-    title: "Spring 2023 - Blooming Ideas",
-    issueNumber: 5,
-    date: "March 2023",
-    pdfUrl: "https://drive.google.com/file/d/12345/preview",
-  },
-  {
-    id: "6",
-    title: "Winter 2023 - Holiday Special",
-    issueNumber: 6,
-    date: "December 2022",
-    pdfUrl: "https://drive.google.com/file/d/12345/preview",
-  },
-];
+// Sort issues to ensure latest is always first
+const issues = [...rawIssues].sort((a, b) => b.issueNumber - a.issueNumber);
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -78,7 +37,7 @@ export default function IssuesPage() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 pt-28">
+    <div className="max-w-6xl mx-auto px-4 py-12 pt-48">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -109,6 +68,7 @@ export default function IssuesPage() {
                 title={issue.title}
                 issueNumber={issue.issueNumber}
                 date={issue.date}
+                coverImage={issue.coverImage}
                 onClick={() => setSelectedIssue(issue)}
               />
             </motion.div>
