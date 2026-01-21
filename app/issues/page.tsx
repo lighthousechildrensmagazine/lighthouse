@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import IssueCard from "@/components/IssueCard";
 import Modal from "@/components/Modal";
-import { issues as rawIssues } from "@/data/issues";
-
-// Sort issues to ensure latest is always first
-const issues = [...rawIssues].sort((a, b) => b.issueNumber - a.issueNumber);
+// import { issues as rawIssues } from "@/data/issues"; // REMOVED
+import { fetchIssues, Issue } from "@/lib/api";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,9 +30,24 @@ const itemVariants = {
 };
 
 export default function IssuesPage() {
-  const [selectedIssue, setSelectedIssue] = useState<typeof issues[0] | null>(
-    null
-  );
+  const [issues, setIssues] = useState<Issue[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
+
+  useEffect(() => {
+    fetchIssues().then(data => {
+      setIssues(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center pt-20">
+        <div className="text-2xl font-display text-indigo-900 animate-pulse">Loading Library...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 pt-48">
@@ -57,23 +70,27 @@ export default function IssuesPage() {
           any cover to read!
         </motion.p>
 
-        <motion.div
-          variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {issues.map((issue) => (
-            <motion.div key={issue.id} variants={itemVariants}>
-              <IssueCard
-                id={issue.id}
-                title={issue.title}
-                issueNumber={issue.issueNumber}
-                date={issue.date}
-                coverImage={issue.coverImage}
-                onClick={() => setSelectedIssue(issue)}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        {issues.length === 0 ? (
+          <div className="text-center text-xl text-gray-500">No issues found. Please check back later!</div>
+        ) : (
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {issues.map((issue) => (
+              <motion.div key={issue.id} variants={itemVariants}>
+                <IssueCard
+                  id={issue.id}
+                  title={issue.title}
+                  issueNumber={issue.issueNumber || 0}
+                  date={issue.date}
+                  coverImage={issue.coverImage}
+                  onClick={() => setSelectedIssue(issue)}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </motion.div>
 
       {selectedIssue && (

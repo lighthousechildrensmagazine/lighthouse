@@ -47,16 +47,17 @@ export default function IssueCard({
       />
 
       {coverImage ? (
-        <div className="aspect-[3/4] relative">
+        <div className="aspect-[210/297] relative">
           <Image
             src={coverImage}
             alt={title}
             fill
-            className="object-cover"
+            className="object-cover object-top"
+            unoptimized
           />
         </div>
       ) : (
-        <div className="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center">
+        <div className="aspect-[210/297] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center">
           <BookOpen className="w-20 h-20 text-white opacity-80" />
         </div>
       )}

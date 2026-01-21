@@ -4,8 +4,79 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { BookOpen, Sparkles, Users, PenTool, Award, FileText, Puzzle, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useMemo, useRef } from "react";
-import { issues } from "@/data/issues";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { fetchIssues, Issue } from "@/lib/api";
+
+function LatestIssueCard() {
+  const [latestIssue, setLatestIssue] = useState<Issue | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchIssues().then(data => {
+      if (data.length > 0) {
+        setLatestIssue(data[0]); // Data is already sorted newest first
+      }
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <div className="text-center font-bold">Loading latest issue...</div>;
+  if (!latestIssue) return <div className="text-center">No issues found yet!</div>;
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05, rotate: 2 }}
+      className="relative w-full max-w-sm"
+    >
+      <div
+        className="relative bg-white border border-gray-300 p-6 transform rotate-2 hover:rotate-3 transition-transform"
+        style={{
+          boxShadow: '5px 5px 0px 0px rgba(0,0,0,0.2)',
+        }}
+      >
+        {/* Tape */}
+        <Image
+          src="/lighthouse/tape1.png"
+          alt="Tape"
+          width={140}
+          height={70}
+          className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
+          style={{ width: "auto", height: "auto" }}
+        />
+
+        <div className="aspect-[3/4] relative mb-4 bg-gray-100">
+          {latestIssue.coverImage ? (
+            <Image
+              src={latestIssue.coverImage}
+              alt={latestIssue.title}
+              fill
+              className="object-cover"
+              unoptimized // Google Drive images don't optimize well via Next.js
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-400">No Cover</div>
+          )}
+        </div>
+
+        <h3 className="text-2xl font-display font-bold text-[#1e1b4b] mb-2">
+          {latestIssue.title}
+        </h3>
+        <p className="text-[#1e1b4b] mb-4">
+          {latestIssue.date}
+        </p>
+        <Link href="/issues">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-lime-400 text-slate-900 rounded-full py-3 text-center font-semibold hover:bg-lime-500 transition-colors"
+          >
+            Read Now
+          </motion.div>
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
 
 const missionItems = [
   {
@@ -202,69 +273,8 @@ export default function Home() {
             Latest Issue
           </h2>
           <div className="flex justify-center">
-            {/* Latest Issue is the first one in sorted issues */}
-            {(() => {
-              // Get issues and sort by descending issueNumber
-              const sortedIssues = [...issues].sort((a, b) => b.issueNumber - a.issueNumber);
-              const latestIssue = sortedIssues[0];
-
-              if (!latestIssue) return null;
-
-              return (
-                <motion.div
-                  whileHover={{ scale: 1.05, rotate: 2 }}
-                  className="relative w-full max-w-sm"
-                >
-                  <div
-                    className="relative bg-white border border-gray-300 p-6 transform rotate-2 hover:rotate-3 transition-transform"
-                    style={{
-                      boxShadow: '5px 5px 0px 0px rgba(0,0,0,0.2)',
-                    }}
-                  >
-                    {/* Tape */}
-                    <Image
-                      src="/lighthouse/tape1.png"
-                      alt="Tape"
-                      width={140}
-                      height={70}
-                      className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
-                      style={{ width: "auto", height: "auto" }}
-                    />
-
-                    {latestIssue.coverImage ? (
-                      <div className="aspect-[3/4] relative mb-4">
-                        <Image
-                          src={latestIssue.coverImage}
-                          alt={latestIssue.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="aspect-[3/4] bg-gradient-to-br from-indigo-400 to-lime-400 flex items-center justify-center mb-4">
-                        <BookOpen className="w-24 h-24 text-white opacity-80" />
-                      </div>
-                    )}
-
-                    <h3 className="text-2xl font-display font-bold text-[#1e1b4b] mb-2">
-                      {latestIssue.title}
-                    </h3>
-                    <p className="text-[#1e1b4b] mb-4">
-                      {latestIssue.date}
-                    </p>
-                    <Link href="/issues">
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full bg-lime-400 text-slate-900 rounded-full py-3 text-center font-semibold hover:bg-lime-500 transition-colors"
-                      >
-                        Read Now
-                      </motion.div>
-                    </Link>
-                  </div>
-                </motion.div>
-              );
-            })()}
+            {/* Dynamic Latest Issue from API */}
+            <LatestIssueCard />
           </div>
         </section>
 

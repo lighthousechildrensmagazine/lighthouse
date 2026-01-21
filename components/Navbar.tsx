@@ -75,6 +75,7 @@ export default function Navbar() {
             width={85}
             height={85}
             className="h-12 w-auto object-contain"
+            priority
           />
         </motion.div>
 

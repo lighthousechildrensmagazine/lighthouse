@@ -1,5 +1,65 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowLeft, Mail } from "lucide-react";
+import { ArrowLeft, Mail, Phone } from "lucide-react";
+import { useState } from "react";
+import { subscribeUser } from "@/lib/api";
+
+function SubscriptionForm() {
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        const result = await subscribeUser(email, phone);
+        if (result.success) {
+            setStatus("success");
+            setEmail("");
+            setPhone("");
+        } else {
+            setStatus("error");
+        }
+    };
+
+    if (status === "success") {
+        return (
+            <div className="bg-green-100 text-green-800 p-4 rounded-lg text-center font-bold">
+                Thanks! You've been subscribed.
+            </div>
+        );
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Enter your phone number (optional)"
+                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200 disabled:opacity-50"
+            >
+                {status === "loading" ? "Joining..." : "Notify Me"}
+            </button>
+            {status === "error" && <p className="text-red-500 text-sm">Something went wrong. Please try again.</p>}
+        </form>
+    );
+}
 
 export default function SubscribePage() {
     return (
@@ -34,19 +94,7 @@ export default function SubscribePage() {
                         <p className="font-bold text-lg mb-2">Want to be notified?</p>
                         <p className="text-slate-600 mb-6">Sign up for our newsletter to get updates when subscriptions open.</p>
 
-                        <form className="flex flex-col gap-3">
-                            <input
-                                type="email"
-                                placeholder="Enter your email address"
-                                className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-                            <button
-                                type="button"
-                                className="w-full px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200"
-                            >
-                                Notify Me
-                            </button>
-                        </form>
+                        <SubscriptionForm />
                     </div>
                 </div>
             </div>
