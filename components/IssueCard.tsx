@@ -52,7 +52,7 @@ export default function IssueCard({
             src={coverImage}
             alt={title}
             fill
-            className="object-cover object-top"
+            className="object-contain object-top"
             unoptimized
           />
         </div>

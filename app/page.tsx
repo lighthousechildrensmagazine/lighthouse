@@ -49,7 +49,7 @@ function LatestIssueCard() {
               src={latestIssue.coverImage}
               alt={latestIssue.title}
               fill
-              className="object-cover object-top"
+              className="object-contain object-top"
               unoptimized // Google Drive images don't optimize well via Next.js
               priority
             />
