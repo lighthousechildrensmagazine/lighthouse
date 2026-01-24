@@ -20,7 +20,7 @@ export async function fetchIssues(): Promise<Issue[]> {
             return data.issues.map((item: any, index: number) => ({
                 id: item.id,
                 title: item.title,
-                issueNumber: data.issues.length - index, // Simple auto-numbering based on sort
+                issueNumber: item.issueNumber || (data.issues.length - index), // Use API data or fallback
                 date: item.date,
                 pdfUrl: item.pdfUrl,
                 coverImage: item.coverImage

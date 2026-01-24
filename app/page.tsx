@@ -41,7 +41,6 @@ function LatestIssueCard() {
           width={140}
           height={70}
           className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
-          style={{ width: "auto", height: "auto" }}
         />
 
         <div className="aspect-[3/4] relative mb-4 bg-gray-100">
@@ -314,7 +313,6 @@ export default function Home() {
                     width={140}
                     height={70}
                     className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
-                    style={{ width: "auto", height: "auto" }}
                   />
                   <h3 className="text-xl font-display font-bold text-[#1e1b4b] mb-3 text-center">
                     {item.title}

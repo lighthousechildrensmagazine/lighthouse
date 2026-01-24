@@ -50,7 +50,7 @@ export default function IssuesPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 pt-48">
+    <div className="max-w-6xl mx-auto px-4 py-12 pt-28">
       <motion.div
         initial="hidden"
         animate="visible"

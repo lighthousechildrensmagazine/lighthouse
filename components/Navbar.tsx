@@ -74,7 +74,7 @@ export default function Navbar() {
             alt="Lighthouse Logo"
             width={85}
             height={85}
-            className="h-12 w-auto object-contain"
+            className="h-7.5 w-auto object-contain"
             priority
           />
         </motion.div>
