@@ -191,7 +191,7 @@ export default function Home() {
           {/* Pencil (Top Left Corner) - Scaled 1.5x */}
           <motion.div
             style={{ y: yPencil, x: xPencil, rotate: rPencil, opacity: oPencil }}
-            className="absolute top-[5%] left-[5%] w-36 md:w-48 z-10"
+            className="absolute top-[5%] left-[-10%] md:left-[5%] w-24 md:w-48 z-10"
           >
             <Image src="/lighthouse/pencil.png" alt="Pencil" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
@@ -199,7 +199,7 @@ export default function Home() {
           {/* Scissors (Top Left Mid) - Moved Left */}
           <motion.div
             style={{ y: yScissors, x: xScissors, rotate: rScissors, opacity: oScissors }}
-            className="absolute top-[18%] left-[5%] w-60 md:w-96 z-10"
+            className="absolute top-[18%] left-[-5%] md:left-[5%] w-32 md:w-96 z-10"
           >
             <Image src="/lighthouse/scissors.png" alt="Scissors" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
@@ -207,7 +207,7 @@ export default function Home() {
           {/* Book (Top Right) */}
           <motion.div
             style={{ y: yBook, x: xBook, rotate: rBook, opacity: oBook }}
-            className="absolute top-[8%] right-[8%] md:right-[12%] w-56 md:w-80 z-10"
+            className="absolute top-[8%] right-[-5%] md:right-[12%] w-32 md:w-80 z-10"
           >
             <Image src="/lighthouse/book.png" alt="Book" width={400} height={400} className="w-full h-auto drop-shadow-2xl" priority />
           </motion.div>
@@ -215,7 +215,7 @@ export default function Home() {
           {/* Ruler (Right Mid) */}
           <motion.div
             style={{ y: yRuler, x: xRuler, rotate: rRuler, opacity: oRuler }}
-            className="absolute top-[40%] right-[2%] w-32 md:w-48 z-10"
+            className="absolute top-[40%] right-[-5%] md:right-[2%] w-24 md:w-48 z-10"
           >
             <Image src="/lighthouse/ruler.png.png" alt="Ruler" width={400} height={100} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
@@ -223,7 +223,7 @@ export default function Home() {
           {/* Paint Set (Bottom Center) - Moved Further Down */}
           <motion.div
             style={{ y: yPaint, x: xPaint, rotate: rPaint, opacity: oPaint }}
-            className="absolute -bottom-[10%] left-1/2 -translate-x-1/2 w-48 md:w-72 z-10"
+            className="absolute -bottom-[5%] md:-bottom-[10%] left-1/2 -translate-x-1/2 w-40 md:w-72 z-10"
           >
             <Image src="/lighthouse/paint.png" alt="Paint Set" width={400} height={400} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
@@ -231,7 +231,7 @@ export default function Home() {
           {/* Book 2 (Bottom Left Corner) - Moved Down/Left */}
           <motion.div
             style={{ y: yBook2, x: xBook2, rotate: rBook2, opacity: oBook2 }}
-            className="absolute bottom-[2%] left-[2%] w-56 md:w-80 z-10"
+            className="absolute bottom-[5%] left-[-5%] md:left-[2%] w-32 md:w-80 z-10"
           >
             <Image src="/lighthouse/book2.png" alt="Book Stack" width={400} height={400} className="w-full h-auto drop-shadow-2xl" />
           </motion.div>
@@ -239,7 +239,7 @@ export default function Home() {
           {/* Clips (Bottom Right) */}
           <motion.div
             style={{ y: yClips, x: xClips, rotate: rClips, opacity: oClips }}
-            className="absolute bottom-[10%] right-[15%] w-32 md:w-48 z-10"
+            className="absolute bottom-[10%] right-[5%] md:right-[15%] w-20 md:w-48 z-10"
           >
             <Image src="/lighthouse/clips.png" alt="Clips" width={400} height={400} className="w-full h-auto drop-shadow-lg" />
           </motion.div>
@@ -249,12 +249,12 @@ export default function Home() {
             style={{ scale: scaleText, y: yText, opacity: oText }}
             className="relative z-20 w-full max-w-4xl px-4 flex flex-col items-center text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-[#1e1b4b] mb-6 mt-12 relative z-10 drop-shadow-2xl">
+            <h1 className="text-4xl md:text-7xl font-display font-bold text-[#1e1b4b] mb-6 mt-12 relative z-10 drop-shadow-2xl">
               Lighting the Path for
               <br />
               <span className="text-lime-500 drop-shadow-md">Curious Young Hearts</span>
             </h1>
-            <p className="text-xl md:text-2xl text-[#1e1b4b] max-w-2xl mx-auto mb-10 font-bold leading-relaxed drop-shadow-lg p-4">
+            <p className="text-lg md:text-2xl text-[#1e1b4b] max-w-2xl mx-auto mb-10 font-bold leading-relaxed drop-shadow-lg p-4">
               Welcome to Lighthouse, a children's magazine created to inspire, educate, and uplift young minds.
             </p>
 
