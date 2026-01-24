@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/issues", label: "Issues" },
   { href: "/activities", label: "Fun Zone" },
+  { href: "/submit", label: "Submit" },
 ];
 
 const containerVariants = {

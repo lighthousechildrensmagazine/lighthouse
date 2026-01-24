@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Laugh } from "lucide-react";
+import { ExternalLink, Laugh, Send } from "lucide-react";
+import Link from "next/link";
 
 const jokes = [
   {
@@ -145,17 +146,13 @@ export default function ActivitiesPage() {
               We love hearing from our students! Share your stories, articles,
               artwork, or ideas with us.
             </p>
-            <motion.a
-              href="https://forms.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Link
+              href="/submit"
               className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg"
             >
-              Submit Your Work
-              <ExternalLink className="w-5 h-5" />
-            </motion.a>
+              Submit
+              <Send className="w-5 h-5" />
+            </Link>
           </div>
         </motion.section>
       </motion.div>
