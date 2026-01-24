@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import IssueCard from "@/components/IssueCard";
-import Modal from "@/components/Modal";
-// import { issues as rawIssues } from "@/data/issues"; // REMOVED
 import { fetchIssues, Issue } from "@/lib/api";
 
 const containerVariants = {
@@ -32,7 +30,6 @@ const itemVariants = {
 export default function IssuesPage() {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
 
   useEffect(() => {
     fetchIssues().then(data => {
@@ -85,22 +82,16 @@ export default function IssuesPage() {
                   issueNumber={issue.issueNumber || 0}
                   date={issue.date}
                   coverImage={issue.coverImage}
-                  onClick={() => setSelectedIssue(issue)}
+                  onClick={() => {
+                    // Force Google Drive Standard View (with Toolbar)
+                    window.open(`https://drive.google.com/file/d/${issue.id}/view`, "_blank");
+                  }}
                 />
               </motion.div>
             ))}
           </motion.div>
         )}
       </motion.div>
-
-      {selectedIssue && (
-        <Modal
-          isOpen={!!selectedIssue}
-          onClose={() => setSelectedIssue(null)}
-          pdfUrl={selectedIssue.pdfUrl}
-          title={selectedIssue.title}
-        />
-      )}
     </div>
   );
 }

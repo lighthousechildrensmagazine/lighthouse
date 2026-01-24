@@ -40,17 +40,18 @@ function LatestIssueCard() {
           alt="Tape"
           width={140}
           height={70}
-          className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
+          className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 w-36 h-auto"
         />
 
-        <div className="aspect-[3/4] relative mb-4 bg-gray-100">
+        <div className="aspect-[210/297] relative mb-4 bg-gray-100">
           {latestIssue.coverImage ? (
             <Image
               src={latestIssue.coverImage}
               alt={latestIssue.title}
               fill
-              className="object-cover"
+              className="object-cover object-top"
               unoptimized // Google Drive images don't optimize well via Next.js
+              priority
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-400">No Cover</div>
@@ -63,7 +64,13 @@ function LatestIssueCard() {
         <p className="text-[#1e1b4b] mb-4">
           {latestIssue.date}
         </p>
-        <Link href="/issues">
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            // Force Google Drive Preview Mode (Reader)
+            window.open(`https://drive.google.com/file/d/${latestIssue.id}/preview`, "_blank");
+          }}
+        >
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -71,7 +78,7 @@ function LatestIssueCard() {
           >
             Read Now
           </motion.div>
-        </Link>
+        </div>
       </div>
     </motion.div>
   );
@@ -312,7 +319,7 @@ export default function Home() {
                     alt="Tape"
                     width={140}
                     height={70}
-                    className="absolute -top-5 left-1/2 -translate-x-1/2 z-10"
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 w-36 h-auto"
                   />
                   <h3 className="text-xl font-display font-bold text-[#1e1b4b] mb-3 text-center">
                     {item.title}
