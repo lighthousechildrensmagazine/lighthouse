@@ -70,26 +70,65 @@ export default function IssuesPage() {
         {issues.length === 0 ? (
           <div className="text-center text-xl text-gray-500">No issues found. Please check back later!</div>
         ) : (
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {issues.map((issue) => (
-              <motion.div key={issue.id} variants={itemVariants}>
-                <IssueCard
-                  id={issue.id}
-                  title={issue.title}
-                  issueNumber={issue.issueNumber || 0}
-                  date={issue.date}
-                  coverImage={issue.coverImage}
-                  onClick={() => {
-                    // Force Google Drive Standard View (with Toolbar)
-                    window.open(`https://drive.google.com/file/d/${issue.id}/view`, "_blank");
-                  }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="space-y-16">
+            {/* Group issues by year and sort descending */}
+            {Object.entries(
+              issues.reduce((acc, issue) => {
+                // Try to parse year from date string
+                let year = 'Other';
+                try {
+                  const date = new Date(issue.date);
+                  if (!isNaN(date.getFullYear())) {
+                    year = date.getFullYear().toString();
+                  } else {
+                    // Fallback to finding 4 digits
+                    const match = issue.date.match(/\b\d{4}\b/);
+                    if (match) year = match[0];
+                  }
+                } catch (e) {
+                  const match = issue.date.match(/\b\d{4}\b/);
+                  if (match) year = match[0];
+                }
+
+                if (!acc[year]) acc[year] = [];
+                acc[year].push(issue);
+                return acc;
+              }, {} as Record<string, Issue[]>)
+            )
+              .sort(([yearA], [yearB]) => {
+                if (yearA === 'Other') return 1;
+                if (yearB === 'Other') return -1;
+                return parseInt(yearB) - parseInt(yearA);
+              })
+              .map(([year, yearIssues]) => (
+                <motion.div key={year} variants={containerVariants} className="relative">
+                  <div className="flex items-center gap-4 mb-8">
+                    <h2 className="text-3xl font-display font-bold text-indigo-900">
+                      {year}
+                    </h2>
+                    <div className="h-px bg-indigo-900 flex-grow"></div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {yearIssues.map((issue) => (
+                      <motion.div key={issue.id} variants={itemVariants}>
+                        <IssueCard
+                          id={issue.id}
+                          title={issue.title}
+                          issueNumber={issue.issueNumber || 0}
+                          date={issue.date}
+                          coverImage={issue.coverImage}
+                          onClick={() => {
+                            // Force Google Drive Standard View (with Toolbar)
+                            window.open(`https://drive.google.com/file/d/${issue.id}/view`, "_blank");
+                          }}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+          </div>
         )}
       </motion.div>
     </div>
