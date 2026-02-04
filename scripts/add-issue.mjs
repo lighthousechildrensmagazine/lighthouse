@@ -103,15 +103,15 @@ async function main() {
                     fs.unlinkSync(finalPath);
                 }
                 fs.renameSync(generatedPath, finalPath);
-                coverUrl = `/lighthouse/covers/${finalCoverName}`;
+                coverUrl = `/covers/${finalCoverName}`;
             } catch (e) {
                 console.error(`Error renaming cover: ${e}`);
                 // Use original if rename failed
-                coverUrl = `/lighthouse/covers/${generatedCoverName}`;
+                coverUrl = `/covers/${generatedCoverName}`;
             }
         } else if (fs.existsSync(finalPath)) {
             // Maybe it was already there manual?
-            coverUrl = `/lighthouse/covers/${finalCoverName}`;
+            coverUrl = `/covers/${finalCoverName}`;
         }
 
         const newEntry = `
@@ -120,7 +120,7 @@ async function main() {
     title: "${title}",
     issueNumber: ${issueNum},
     date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-    pdfUrl: "/lighthouse/issues/${file}",
+    pdfUrl: "/issues/${file}",
     ${coverUrl ? `coverImage: "${coverUrl}",` : '// No coverImage generated'}
   },`;
 

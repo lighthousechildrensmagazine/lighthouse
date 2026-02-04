@@ -96,7 +96,7 @@ export default function Navbar() {
             <motion.div variants={itemVariants} className="flex items-center">
               <Link href="/">
                 <Image
-                  src="/lighthouse/logo1.png"
+                  src="/logo1.png"
                   alt="Lighthouse Logo"
                   width={85}
                   height={85}

@@ -42,7 +42,7 @@ export default function LoadingVideo() {
         >
           <video
             ref={videoRef}
-            src="/lighthouse/loading1.mp4"
+            src="/loading1.mp4"
             className="w-full h-full object-contain"
             muted
             playsInline

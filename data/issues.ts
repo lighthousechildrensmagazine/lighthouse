@@ -10,28 +10,32 @@ export interface Issue {
 // This list manages your issues.
 // It is automatically updated by the 'npm run new-issue' command.
 // You can also manually edit it if needed.
+export interface Issue {
+    id: string;
+    title: string;
+    issueNumber: number;
+    date: string;
+    pdfUrl: string;
+    coverImage?: string; // New field for local cover images
+}
+
+// This list manages your issues.
+// It is automatically updated by the 'npm run new-issue' command.
+// You can also manually edit it if needed.
 export const issues: Issue[] = [
-  {
-    id: "1768674372688xtqxf",
-    title: "BacktoSchool copy",
-    issueNumber: 999,
-    date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-    pdfUrl: "/lighthouse/issues/BacktoSchool copy.pdf",
-    coverImage: "/lighthouse/covers/BacktoSchool copy.jpg",
-  },
-  {
-    id: "17686743738551gc5b",
-    title: "BacktoSchool",
-    issueNumber: 999,
-    date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-    pdfUrl: "/lighthouse/issues/BacktoSchool.pdf",
-    coverImage: "/lighthouse/covers/BacktoSchool.jpg",
-  },
     {
-        id: "1",
-        title: "Spring 2024 - Fresh Perspectives",
-        issueNumber: 1,
-        date: "March 2024",
+        id: "1768674372688xtqxf",
+        title: "BacktoSchool copy",
+        issueNumber: 999,
+        date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+        pdfUrl: "/issues/BacktoSchool copy.pdf",
+        coverImage: "/covers/BacktoSchool copy.jpg",
+    },
+    {
+        id: "17686743738551gc5b",
+        title: "BacktoSchool",
+        issueNumber: 999,
+        date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
         pdfUrl: "https://drive.google.com/file/d/12345/preview", // Legacy link
         // No coverImage yet implies using the default fallback or existing logic
     },

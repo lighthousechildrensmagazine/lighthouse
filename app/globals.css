@@ -17,7 +17,7 @@
 }
 
 body {
-  background-image: url('/lighthouse/bg-fixed.jpg');
+  background-image: url('/bg-fixed.jpg');
   background-repeat: repeat;
   background-size: 400px;
   color: var(--foreground);

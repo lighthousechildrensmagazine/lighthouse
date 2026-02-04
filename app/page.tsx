@@ -36,7 +36,7 @@ function LatestIssueCard() {
       >
         {/* Tape */}
         <Image
-          src="/lighthouse/tape1.png"
+          src="/tape1.png"
           alt="Tape"
           width={140}
           height={70}
@@ -173,7 +173,7 @@ export default function Home() {
       {/* Global Fixed Background */}
       <div className="fixed inset-0 z-[-1]">
         <Image
-          src="/lighthouse/desk.png"
+          src="/desk.png"
           alt="Desk Background"
           fill
           className="object-cover"
@@ -193,7 +193,7 @@ export default function Home() {
             style={{ y: yPencil, x: xPencil, rotate: rPencil, opacity: oPencil }}
             className="absolute top-[5%] left-[-10%] md:left-[5%] w-24 md:w-48 z-10"
           >
-            <Image src="/lighthouse/pencil.png" alt="Pencil" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
+            <Image src="/pencil.png" alt="Pencil" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
 
           {/* Scissors (Top Left Mid) - Moved Left */}
@@ -201,7 +201,7 @@ export default function Home() {
             style={{ y: yScissors, x: xScissors, rotate: rScissors, opacity: oScissors }}
             className="absolute top-[18%] left-[-5%] md:left-[5%] w-32 md:w-96 z-10"
           >
-            <Image src="/lighthouse/scissors.png" alt="Scissors" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
+            <Image src="/scissors.png" alt="Scissors" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
 
           {/* Book (Top Right) */}
@@ -209,7 +209,7 @@ export default function Home() {
             style={{ y: yBook, x: xBook, rotate: rBook, opacity: oBook }}
             className="absolute top-[8%] right-[-5%] md:right-[12%] w-32 md:w-80 z-10"
           >
-            <Image src="/lighthouse/book.png" alt="Book" width={400} height={400} className="w-full h-auto drop-shadow-2xl" priority />
+            <Image src="/book.png" alt="Book" width={400} height={400} className="w-full h-auto drop-shadow-2xl" priority />
           </motion.div>
 
           {/* Ruler (Right Mid) */}
@@ -217,7 +217,7 @@ export default function Home() {
             style={{ y: yRuler, x: xRuler, rotate: rRuler, opacity: oRuler }}
             className="absolute top-[40%] right-[-5%] md:right-[2%] w-24 md:w-48 z-10"
           >
-            <Image src="/lighthouse/ruler.png.png" alt="Ruler" width={400} height={100} className="w-full h-auto drop-shadow-xl" />
+            <Image src="/ruler.png.png" alt="Ruler" width={400} height={100} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
 
           {/* Paint Set (Bottom Center) - Moved Further Down */}
@@ -225,7 +225,7 @@ export default function Home() {
             style={{ y: yPaint, x: xPaint, rotate: rPaint, opacity: oPaint }}
             className="absolute -bottom-[5%] md:-bottom-[10%] left-1/2 -translate-x-1/2 w-40 md:w-72 z-10"
           >
-            <Image src="/lighthouse/paint.png" alt="Paint Set" width={400} height={400} className="w-full h-auto drop-shadow-xl" />
+            <Image src="/paint.png" alt="Paint Set" width={400} height={400} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
 
           {/* Book 2 (Bottom Left Corner) - Moved Down/Left */}
@@ -233,7 +233,7 @@ export default function Home() {
             style={{ y: yBook2, x: xBook2, rotate: rBook2, opacity: oBook2 }}
             className="absolute bottom-[5%] left-[-5%] md:left-[2%] w-32 md:w-80 z-10"
           >
-            <Image src="/lighthouse/book2.png" alt="Book Stack" width={400} height={400} className="w-full h-auto drop-shadow-2xl" />
+            <Image src="/book2.png" alt="Book Stack" width={400} height={400} className="w-full h-auto drop-shadow-2xl" />
           </motion.div>
 
           {/* Clips (Bottom Right) */}
@@ -241,7 +241,7 @@ export default function Home() {
             style={{ y: yClips, x: xClips, rotate: rClips, opacity: oClips }}
             className="absolute bottom-[10%] right-[5%] md:right-[15%] w-20 md:w-48 z-10"
           >
-            <Image src="/lighthouse/clips.png" alt="Clips" width={400} height={400} className="w-full h-auto drop-shadow-lg" />
+            <Image src="/clips.png" alt="Clips" width={400} height={400} className="w-full h-auto drop-shadow-lg" />
           </motion.div>
 
           {/* Center Text Container */}
@@ -315,7 +315,7 @@ export default function Home() {
                 >
                   {/* Tape */}
                   <Image
-                    src={`/lighthouse/tape${tapeNumber}.png`}
+                    src={`/tape${tapeNumber}.png`}
                     alt="Tape"
                     width={140}
                     height={70}
