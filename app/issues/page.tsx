@@ -106,7 +106,6 @@ export default function IssuesPage() {
                     <h2 className="text-3xl font-display font-bold text-indigo-900">
                       {year}
                     </h2>
-                    <div className="h-px bg-indigo-900 flex-grow"></div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
