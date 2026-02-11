@@ -19,8 +19,11 @@ const patrickHand = Patrick_Hand({
 });
 
 export const metadata: Metadata = {
-  title: "Lighthouse - The Voice of Your School",
+  title: "Lighthouse Children's Magazine",
   description: "A vibrant school magazine for students aged 10-14",
+  icons: {
+    icon: "/favicon1.png",
+  },
 };
 
 export default function RootLayout({
