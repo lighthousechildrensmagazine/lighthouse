@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Send, Gamepad2, Rocket, Sun, Moon, Ghost, Zap, Sparkles, Brain, Lightbulb } from "lucide-react";
+import { ExternalLink, Send, Gamepad2, Rocket, Sun, Moon, Ghost, Zap, Sparkles, Brain, RotateCcw } from "lucide-react";
 import Link from "next/link";
 
 // Card Data for Memory Game
@@ -200,7 +200,7 @@ export default function ActivitiesPage() {
                 onClick={initializeGame}
                 className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-lg hover:bg-indigo-200 transition-colors font-semibold flex items-center gap-2"
               >
-                <Brain className="w-4 h-4" /> Restart
+                <RotateCcw className="w-4 h-4" /> Restart
               </button>
             </div>
 
@@ -261,7 +261,6 @@ export default function ActivitiesPage() {
         {/* Did You Know? Fact Carousel */}
         <motion.section variants={itemVariants} className="mb-20">
           <div className="flex items-center gap-3 mb-8">
-            <Lightbulb className="w-8 h-8 text-yellow-400" />
             <h2 className="text-3xl md:text-4xl font-hand font-bold text-indigo-600">
               Did You Know?
             </h2>

@@ -252,7 +252,7 @@ export default function Home() {
             <h1 className="text-3xl md:text-6xl font-hand font-bold text-[#1e1b4b] mb-6 mt-12 relative z-10 drop-shadow-2xl">
               Lighting the Path for
               <br />
-              <span className="text-lime-400 drop-shadow-md">Curious Young Hearts</span>
+              <span className="text-yellow-300 drop-shadow-md">Curious Young Hearts</span>
             </h1>
             <p className="text-lg md:text-2xl text-[#1e1b4b] max-w-2xl mx-auto mb-10 font-bold leading-relaxed drop-shadow-lg p-4">
               Welcome to Lighthouse, a children's magazine created to inspire, educate, and uplift young minds.
