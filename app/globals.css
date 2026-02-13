@@ -9,17 +9,15 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit);
-  --font-display: var(--font-patrick-hand);
+  --font-hand: var(--font-sister);
 }
 
-.font-display {
-  font-family: var(--font-patrick-hand), cursive;
+.font-hand {
+  font-family: var(--font-sister), cursive !important;
 }
 
 body {
-  background-image: url('/bg-fixed.jpg');
-  background-repeat: repeat;
-  background-size: 400px;
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-outfit), system-ui, sans-serif;
 }

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Outfit, Patrick_Hand } from "next/font/google";
+import { Outfit, Love_Ya_Like_A_Sister } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import LoadingVideo from "@/components/LoadingVideo";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -11,9 +10,9 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const patrickHand = Patrick_Hand({
+const loveYaLikeASister = Love_Ya_Like_A_Sister({
   weight: "400",
-  variable: "--font-patrick-hand",
+  variable: "--font-sister",
   subsets: ["latin"],
   display: "swap",
 });
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
   title: "Lighthouse Children's Magazine",
   description: "A vibrant school magazine for students aged 10-14",
   icons: {
-    icon: "/favicon1.png",
+    icon: "/favicon3.png",
   },
 };
 
@@ -34,9 +33,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${outfit.variable} ${patrickHand.variable} font-sans antialiased`}
+        className={`${outfit.variable} ${loveYaLikeASister.variable} antialiased`}
       >
-        <LoadingVideo />
         <Navbar />
         <main className="min-h-screen">
           {children}

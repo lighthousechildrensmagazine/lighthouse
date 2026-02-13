@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { subscribeUser } from "@/lib/api";
@@ -63,10 +64,19 @@ function SubscriptionForm() {
 
 export default function SubscribePage() {
     return (
-        <main className="min-h-screen bg-[#fffbeb] text-[#1e1b4b] relative overflow-hidden">
-            {/* Background Decorative Elements - simpler version of home for consistency */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-lime-200 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-200 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
+        <main className="min-h-screen text-[#1e1b4b] relative overflow-hidden">
+            {/* Background Image */}
+            <div className="fixed inset-0 z-[-1]">
+                <Image
+                    src="/subsbg.jpg"
+                    alt="Background"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                {/* Optional Overlay to ensure text readability */}
+                <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" />
+            </div>
 
             <div className="max-w-4xl mx-auto px-4 py-12 md:py-20 relative z-10">
                 <Link
@@ -82,7 +92,7 @@ export default function SubscribePage() {
                         <Mail className="w-10 h-10 text-lime-600" />
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
+                    <h1 className="text-4xl md:text-5xl font-hand font-bold mb-6">
                         Subscribe to Lighthouse
                     </h1>
 

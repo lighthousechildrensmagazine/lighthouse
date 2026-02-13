@@ -62,7 +62,7 @@ export default function IssueCard({
         </div>
       )}
       <div className="p-6">
-        <h3 className="text-xl font-display font-bold text-[#1e1b4b] mb-2">
+        <h3 className="text-xl font-hand font-bold text-[#1e1b4b] mb-2">
           {title}
         </h3>
         <p className="text-sm text-[#1e1b4b] mb-1">Issue #{issueNumber}</p>

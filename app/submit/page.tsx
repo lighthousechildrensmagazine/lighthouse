@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Send, Upload, User, Mail, Phone, School, FileText } from "lucide-react";
 import { useState, useRef } from "react";
 import { submitArticle } from "@/lib/api";
@@ -57,7 +58,7 @@ export default function SubmitPage() {
                     <div className="w-20 h-20 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <Send className="w-10 h-10 text-lime-600" />
                     </div>
-                    <h2 className="text-3xl font-display font-bold mb-4">Submission Received!</h2>
+                    <h2 className="text-3xl font-hand font-bold mb-4">Submission Received!</h2>
                     <p className="text-lg text-slate-600 mb-8">
                         Thank you for sharing your creativity with Lighthouse. We'll review your submission and get back to you soon!
                     </p>
@@ -79,10 +80,19 @@ export default function SubmitPage() {
     }
 
     return (
-        <main className="min-h-screen bg-[#fffbeb] text-[#1e1b4b] relative overflow-hidden">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-orange-200 rounded-full blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-lime-200 rounded-full blur-3xl opacity-20 translate-x-1/2 translate-y-1/2" />
+        <main className="min-h-screen text-[#1e1b4b] relative overflow-hidden">
+            {/* Background Image */}
+            <div className="fixed inset-0 z-[-1]">
+                <Image
+                    src="/kids.jpg"
+                    alt="Background"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                {/* Optional Overlay to ensure text readability */}
+                <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" />
+            </div>
 
             <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 relative z-10">
                 <Link
@@ -95,7 +105,7 @@ export default function SubmitPage() {
 
                 <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-xl border border-white/50">
                     <div className="text-center mb-10">
-                        <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 text-indigo-900">
+                        <h1 className="text-4xl md:text-5xl font-hand font-bold mb-4 text-indigo-900">
                             Submit Your Work
                         </h1>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto">

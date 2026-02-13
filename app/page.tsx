@@ -26,10 +26,10 @@ function LatestIssueCard() {
   return (
     <motion.div
       whileHover={{ scale: 1.05, rotate: 2 }}
-      className="relative w-full max-w-sm"
+      className="relative w-full max-w-xs"
     >
       <div
-        className="relative bg-white border border-gray-300 p-6 transform rotate-2 hover:rotate-3 transition-transform"
+        className="relative bg-white border border-gray-300 p-5 transform rotate-2 hover:rotate-3 transition-transform"
         style={{
           boxShadow: '5px 5px 0px 0px rgba(0,0,0,0.2)',
         }}
@@ -58,7 +58,7 @@ function LatestIssueCard() {
           )}
         </div>
 
-        <h3 className="text-2xl font-display font-bold text-[#1e1b4b] mb-2">
+        <h3 className="text-2xl font-hand font-bold text-[#1e1b4b] mb-2">
           {latestIssue.title}
         </h3>
         <p className="text-[#1e1b4b] mb-4">
@@ -183,7 +183,7 @@ export default function Home() {
       </div>
 
       {/* Scroll Container for Hero */}
-      <div ref={containerRef} className="h-[150vh] relative z-0">
+      <div ref={containerRef} className="h-[125vh] relative z-0">
         <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
 
           {/* Background removed from here as it is now global */}
@@ -191,17 +191,17 @@ export default function Home() {
           {/* Pencil (Top Left Corner) - Scaled 1.5x */}
           <motion.div
             style={{ y: yPencil, x: xPencil, rotate: rPencil, opacity: oPencil }}
-            className="absolute top-[5%] left-[-10%] md:left-[5%] w-24 md:w-48 z-10"
+            className="absolute top-[7%] left-[-10%] md:left-[5%] w-32 md:w-56 z-10"
           >
-            <Image src="/pencil.png" alt="Pencil" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
+            <Image src="/pencil.png" alt="Pencil" width={400} height={400} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
 
-          {/* Scissors (Top Left Mid) - Moved Left */}
+          {/* Scissors (Top Left Mid) - Moved Down to Avoid Overlap */}
           <motion.div
             style={{ y: yScissors, x: xScissors, rotate: rScissors, opacity: oScissors }}
-            className="absolute top-[18%] left-[-5%] md:left-[5%] w-32 md:w-96 z-10"
+            className="absolute top-[25%] left-[-2%] md:left-[12%] w-25 md:w-60 z-10"
           >
-            <Image src="/scissors.png" alt="Scissors" width={300} height={300} className="w-full h-auto drop-shadow-xl" />
+            <Image src="/scissors.png" alt="Scissors" width={200} height={200} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
 
           {/* Book (Top Right) */}
@@ -223,7 +223,7 @@ export default function Home() {
           {/* Paint Set (Bottom Center) - Moved Further Down */}
           <motion.div
             style={{ y: yPaint, x: xPaint, rotate: rPaint, opacity: oPaint }}
-            className="absolute -bottom-[5%] md:-bottom-[10%] left-1/2 -translate-x-1/2 w-40 md:w-72 z-10"
+            className="absolute -bottom-[5%] md:-bottom-[13%] left-1/2 -translate-x-1/2 w-40 md:w-72 z-10"
           >
             <Image src="/paint.png" alt="Paint Set" width={400} height={400} className="w-full h-auto drop-shadow-xl" />
           </motion.div>
@@ -239,9 +239,9 @@ export default function Home() {
           {/* Clips (Bottom Right) */}
           <motion.div
             style={{ y: yClips, x: xClips, rotate: rClips, opacity: oClips }}
-            className="absolute bottom-[10%] right-[5%] md:right-[15%] w-20 md:w-48 z-10"
+            className="absolute bottom-[10%] right-[5%] md:right-[15%] w-28 md:w-56 z-10"
           >
-            <Image src="/clips.png" alt="Clips" width={400} height={400} className="w-full h-auto drop-shadow-lg" />
+            <Image src="/clips.png" alt="Clips" width={500} height={500} className="w-full h-auto drop-shadow-lg" />
           </motion.div>
 
           {/* Center Text Container */}
@@ -249,10 +249,10 @@ export default function Home() {
             style={{ scale: scaleText, y: yText, opacity: oText }}
             className="relative z-20 w-full max-w-4xl px-4 flex flex-col items-center text-center"
           >
-            <h1 className="text-4xl md:text-7xl font-display font-bold text-[#1e1b4b] mb-6 mt-12 relative z-10 drop-shadow-2xl">
+            <h1 className="text-3xl md:text-6xl font-hand font-bold text-[#1e1b4b] mb-6 mt-12 relative z-10 drop-shadow-2xl">
               Lighting the Path for
               <br />
-              <span className="text-lime-500 drop-shadow-md">Curious Young Hearts</span>
+              <span className="text-lime-600 drop-shadow-md">Curious Young Hearts</span>
             </h1>
             <p className="text-lg md:text-2xl text-[#1e1b4b] max-w-2xl mx-auto mb-10 font-bold leading-relaxed drop-shadow-lg p-4">
               Welcome to Lighthouse, a children's magazine created to inspire, educate, and uplift young minds.
@@ -274,19 +274,80 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 py-12 relative z-10 bg-orange-50/0">
 
         {/* Latest Issue Card */}
-        <section className="mb-20 mt-20">
-          <h2 className="text-3xl font-display font-bold text-[#1e1b4b] mb-6 text-center">
+        <section className="mb-50 mt-10">
+          <h2 className="text-3xl font-hand font-bold text-[#1e1b4b] mb-6 text-center">
             Latest Issue
           </h2>
           <div className="flex justify-center">
-            {/* Dynamic Latest Issue from API */}
-            <LatestIssueCard />
+            <div className="w-full max-w-xs transform rotate-2 hover:rotate-0 transition-transform duration-500">
+              {/* Dynamic Latest Issue from API */}
+              <LatestIssueCard />
+            </div>
           </div>
+        </section>
+
+        {/* About Us Section */}
+        <section className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative bg-orange-50 border border-orange-200 rounded-3xl p-8 md:p-12 transform -rotate-1 shadow-xl max-w-4xl mx-auto"
+            style={{
+              boxShadow: '8px 8px 0px 0px rgba(0,0,0,0.1)',
+            }}
+          >
+            {/* Top Tape */}
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-24 z-10 rotate-2">
+              <Image src="/tape1.png" alt="Tape" fill className="object-contain" />
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-hand font-bold text-[#1e1b4b] mb-8 text-center">
+              About Us
+            </h2>
+
+            <div className="space-y-6 text-[#1e1b4b] text-lg leading-relaxed">
+              <p>
+                <span className="font-bold text-indigo-800">Lighthouse</span> is a children's magazine designed to guide young minds with light, values, and imagination. Just as a lighthouse shows the right path in the dark, our magazine aims to illuminate the hearts and thoughts of children with moral clarity, creativity, and purpose.
+              </p>
+              <p>
+                In a world where children are surrounded by fast entertainment and conflicting influences, Lighthouse serves as a meaningful alternative - one that blends learning with joy, stories with wisdom, and fun with values.
+              </p>
+
+              <div className="bg-white/60 rounded-2xl p-6 mt-8 border border-orange-100">
+                <h3 className="text-xl font-hand font-bold text-indigo-800 mb-3">Our Aim</h3>
+                <p>
+                  To prepare the future generation with strong moral and ethical values, enabling them to grow into visionary assets for society.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-hand font-bold text-indigo-800 mb-4 mt-6">Our Objectives</h3>
+                <ul className="grid md:grid-cols-2 gap-4">
+                  {[
+                    "To popularize noble thoughts and positive values among children aged 10–14 years",
+                    "To provide an engaging and value-based alternative to mainstream entertainment",
+                    "To cultivate reading, thinking, and writing skills among children",
+                    "To encourage children to express themselves through creativity, stories, and ideas"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-lime-500 text-xl font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="font-bold text-center mt-8 text-indigo-900">
+                Each issue of Lighthouse is thoughtfully curated to educate, inspire, and engage young readers through diverse sections.
+              </p>
+            </div>
+          </motion.div>
         </section>
 
         {/* Mission Section */}
         <section className="mb-20">
-          <h2 className="text-3xl font-display font-bold text-[#1e1b4b] mb-6 text-center">
+          <h2 className="text-3xl font-hand font-bold text-[#1e1b4b] mb-6 text-center">
             What You'll Find Inside Lighthouse
           </h2>
           <p className="text-lg text-[#1e1b4b] max-w-3xl mx-auto mb-12 text-center">
@@ -321,13 +382,76 @@ export default function Home() {
                     height={70}
                     className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 w-36 h-auto"
                   />
-                  <h3 className="text-xl font-display font-bold text-[#1e1b4b] mb-3 text-center">
+                  <h3 className="text-xl font-hand font-bold text-[#1e1b4b] mb-3 text-center">
                     {item.title}
                   </h3>
                   <p className="text-[#1e1b4b]">{item.description}</p>
                 </motion.div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-hand font-bold text-[#1e1b4b] mb-12 text-center">
+            Meet the Lighthouse team 2026
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Suhaib Ahmed Khan",
+                qualification: "Engineer, AI&DS",
+                role: "Editor",
+                image: "/suhaib.png"
+              },
+              {
+                name: "Muaz Ahmed Qureshi",
+                qualification: "Engineer, ECE",
+                role: "Manager",
+                image: "/muaz.png"
+              },
+              {
+                name: "Md Jaffer Sulaiman",
+                qualification: "Engineer, AI&ML",
+                role: "Designer",
+                image: "/jaffer.png"
+              },
+              {
+                name: "Musab Latifi",
+                qualification: "Engineer, AI&ML",
+                role: "Media Manager",
+                image: "/musab.png"
+              }
+            ].map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 text-center shadow-lg border border-indigo-100"
+              >
+                <div className="relative w-32 h-32 mx-auto mb-4">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover rounded-full border-4 border-lime-400"
+                  />
+                </div>
+                <h3 className="text-xl font-hand font-bold text-indigo-900 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-sm font-semibold text-slate-600 mb-1">
+                  {member.qualification}
+                </p>
+                <p className="text-sm text-lime-600 font-bold uppercase tracking-wider">
+                  {member.role}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </section>
       </div >

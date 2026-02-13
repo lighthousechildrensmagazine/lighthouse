@@ -41,7 +41,7 @@ export default function IssuesPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center pt-20">
-        <div className="text-2xl font-display text-indigo-900 animate-pulse">Loading Library...</div>
+        <div className="text-2xl font-hand text-indigo-900 animate-pulse">Loading Library...</div>
       </div>
     );
   }
@@ -103,7 +103,7 @@ export default function IssuesPage() {
               .map(([year, yearIssues]) => (
                 <motion.div key={year} variants={containerVariants} className="relative">
                   <div className="flex items-center gap-4 mb-8">
-                    <h2 className="text-3xl font-display font-bold text-indigo-900">
+                    <h2 className="text-3xl font-hand font-bold text-indigo-900">
                       {year}
                     </h2>
                   </div>

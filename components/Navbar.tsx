@@ -117,7 +117,7 @@ export default function Navbar() {
                   <motion.div key={link.href} variants={itemVariants}>
                     <Link
                       href={link.href}
-                      className={`relative px-4 py-2 text-sm font-medium transition-colors ${isActive
+                      className={`relative px-4 py-2 text-base font-hand font-bold transition-colors ${isActive
                         ? "text-indigo-600"
                         : "text-slate-600 hover:text-indigo-600"
                         }`}
@@ -179,7 +179,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-lg font-medium transition-colors ${pathname === link.href
+                    className={`text-base font-hand font-bold transition-colors ${pathname === link.href
                       ? "text-indigo-600"
                       : "text-slate-600 hover:text-indigo-600"
                       }`}
