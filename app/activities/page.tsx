@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Send, Gamepad2, Rocket, Sun, Moon, Ghost, Music, Sparkles, Brain, Lightbulb } from "lucide-react";
+import { ExternalLink, Send, Gamepad2, Rocket, Sun, Moon, Ghost, Zap, Sparkles, Brain, Lightbulb } from "lucide-react";
 import Link from "next/link";
 
 // Card Data for Memory Game
@@ -12,7 +12,7 @@ const CARD_ICONS = [
   { name: "Moon", icon: Moon },
   { name: "Ghost", icon: Ghost },
   { name: "Gamepad", icon: Gamepad2 },
-  { name: "Music", icon: Music },
+  { name: "Lightning", icon: Zap },
   // 6 pairs = 12 cards
 ];
 
