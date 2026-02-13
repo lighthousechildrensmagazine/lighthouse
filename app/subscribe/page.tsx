@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+
 import Image from "next/image";
-import { ArrowLeft, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { subscribeUser } from "@/lib/api";
 
@@ -78,14 +78,8 @@ export default function SubscribePage() {
                 <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" />
             </div>
 
-            <div className="max-w-4xl mx-auto px-4 py-12 md:py-20 relative z-10">
-                <Link
-                    href="/"
-                    className="inline-flex items-center text-indigo-600 font-bold hover:underline mb-8"
-                >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Home
-                </Link>
+            <div className="max-w-4xl mx-auto px-4 pt-24 md:pt-28 pb-12 md:pb-20 relative z-10">
+
 
                 <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-white/50 text-center">
                     <div className="w-20 h-20 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-6">
